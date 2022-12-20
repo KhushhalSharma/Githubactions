@@ -1,5 +1,5 @@
 name: counter_app
-#Triggers(events)
+# Triggers (events)
 on:
   push:
 
@@ -7,8 +7,7 @@ on:
     branches:
       - main
 
-#functions(whats need to be done)
-
+# functions (what needs to be done)
 jobs:
   build:
     name: Build
@@ -37,7 +36,7 @@ jobs:
     needs: build
 
     steps:
-      - name: Dowload artifact
+      - name: Download artifact
         uses: actions/download-artifact@v2
         with:
           name: production-files
@@ -46,5 +45,5 @@ jobs:
       - name: Deploy to github pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_tokken: ${{secrets.GH_TOEN}}
+          github_token: ${{secrets.GH_TOEN}}
           publish_dir: ./build
